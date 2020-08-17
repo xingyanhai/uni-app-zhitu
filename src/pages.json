@@ -7,6 +7,12 @@
 			}
 		},
 		{
+			"path": "pages/answer/detail",
+			"style": {
+				"navigationBarTitleText": "高赞回答"
+			}
+		},
+		{
 			"path": "pages/center/center",
 			"style": {
 				"navigationBarTitleText": "个人中心",

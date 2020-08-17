@@ -24,6 +24,7 @@
     page, view {
         display: flex;
         color $uni-text-color
+        box-sizing border-box
     }
 
     page {
