@@ -20,16 +20,16 @@
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "white",
+		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "高赞回答",
 		"navigationBarBackgroundColor": "#ffffff",
-		"backgroundColor": "#ffffff"
+		"backgroundColor": "#f6f6f6"
 	},
 	"tabBar": {
-		"color": "#aaa",
-		"selectedColor": "#fff",
+		"color": "#444444",
+		"selectedColor": "#0084ff",
 		"borderStyle": "black",
-		"backgroundColor": "#1b1b1b",
+		"backgroundColor": "#ffffff",
 		"list": [
 			{
 				"pagePath": "pages/answer/answer",

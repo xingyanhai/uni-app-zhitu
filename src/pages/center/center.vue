@@ -46,7 +46,7 @@
 	export default {
 		data() {
 			return {
-				avatarUrl: '/static/logo.png',
+				avatarUrl: '/static/img/logo.png',
 			}
 		},
 		computed: mapState(['userInfo','config', 'userPower', 'shareImgUrl']),
@@ -105,6 +105,7 @@
 		width: 100%;
 		box-sizing: border-box;
 		overflow: hidden;
+		background-color $uni-list-item-color;
 		.get-user-button {
 			display: flex;
 			width: 100%;
@@ -119,12 +120,16 @@
 			box-sizing: border-box;
 			overflow: hidden;
 			margin-top: -1px;
+			&:after {
+				border none
+			}
 		}
 		.logo-img {
 			width: 75px;
 			height: 75px;
 			border: 2px solid #fff;
 			margin 0 20px
+			border-radius 50%;
 		}
 		.logo-title {
 			display: block;
