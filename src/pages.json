@@ -1,9 +1,9 @@
 {
 	"pages": [
 		{
-			"path": "pages/video-search/video-search",
+			"path": "pages/answer/answer",
 			"style": {
-				"navigationBarTitleText": "电影搜索"
+				"navigationBarTitleText": "高赞回答"
 			}
 		},
 		{
@@ -21,9 +21,9 @@
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "电影搜索",
-		"navigationBarBackgroundColor": "#111111",
-		"backgroundColor": "#111111"
+		"navigationBarTitleText": "高赞回答",
+		"navigationBarBackgroundColor": "#ffffff",
+		"backgroundColor": "#ffffff"
 	},
 	"tabBar": {
 		"color": "#aaa",
@@ -32,10 +32,10 @@
 		"backgroundColor": "#1b1b1b",
 		"list": [
 			{
-				"pagePath": "pages/video-search/video-search",
-				"iconPath": "static/img/search-0.png",
-				"selectedIconPath": "static/img/search-1.png",
-				"text": "搜索"
+				"pagePath": "pages/answer/answer",
+				"iconPath": "static/img/txt-0.png",
+				"selectedIconPath": "static/img/txt-1.png",
+				"text": "回答"
 			},
 			{
 				"pagePath": "pages/center/center",
@@ -46,6 +46,6 @@
 		]
 	},
 	"window": {
-		"backgroundColor": "#111111"
+		"backgroundColor": "#ffffff"
 	}
 }

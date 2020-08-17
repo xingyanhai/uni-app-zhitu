@@ -1,12 +1,5 @@
 <template>
 	<view class="center">
-		<!--<view class="logo" @click="goLogin" :hover-class="!userInfo.isLogin ? 'logo-hover' : ''">-->
-			<!--<image class="logo-img" :src="userInfo.avatarUrl ? userInfo.avatarUrl :avatarUrl"></image>-->
-			<!--<view class="logo-title">-->
-				<!--<text class="uer-name">Hi，{{userInfo.nickName ? userInfo.nickName : '您未登录'}}</text>-->
-				<!--<text class="go-login navigat-arrow" v-if="!userInfo.isLogin">&#xe65e;</text>-->
-			<!--</view>-->
-		<!--</view>-->
 		<view class="logo" :hover-class="!userInfo.isLogin ? 'logo-hover' : ''">
 			<button class="get-user-button" @getuserinfo="getUserInfoClick" open-type="getUserInfo">
 				<image class="logo-img" mode="widthFix" :src="userInfo.avatarUrl ? userInfo.avatarUrl :avatarUrl"></image>
@@ -15,25 +8,6 @@
 					</view>
 				</view>
 			</button>
-		</view>
-		<!--<view class="center-list">-->
-			<!--<view class="center-list-item border-bottom">-->
-				<!--<text class="list-icon">&#xe60c;</text>-->
-				<!--<text class="list-text">收藏图片</text>-->
-				<!--<text class="navigat-arrow">&#xe65e;</text>-->
-			<!--</view>-->
-			<!--<view class="center-list-item">-->
-				<!--<text class="list-icon">&#xe60d;</text>-->
-				<!--<text class="list-text">收藏图集</text>-->
-				<!--<text class="navigat-arrow">&#xe65e;</text>-->
-			<!--</view>-->
-		<!--</view>-->
-		<view class="center-list" v-if="config.showUploadImage || userPower === -1">
-			<view class="center-list-item" @click="goUploadImg">
-				<text class="list-icon">&#xe61a;</text>
-				<text class="list-text">上传图片</text>
-				<text class="navigat-arrow">&#xe65e;</text>
-			</view>
 		</view>
 		<view class="center-list">
 			<view class="center-list-item border-bottom" @click="goAbout">
@@ -55,26 +29,6 @@
 				</view>
                 <text class="navigat-arrow">&#xe65e;</text>
             </view>
-			<view class="center-list-item" @click="toImgOcr" v-if="config.showImageRecognition">
-				<text class="list-icon">&#xe609;</text>
-				<text class="list-text">图片识别</text>
-				<text class="navigat-arrow">&#xe65e;</text>
-			</view>
-			<view class="center-list-item" @click="goTest" v-if="config.showTest || userPower === -1">
-				<text class="list-icon">&#xe609;</text>
-				<text class="list-text">test</text>
-				<text class="navigat-arrow">&#xe65e;</text>
-			</view>
-			<view class="center-list-item" @click="toPage('/pages/oil-compute/oil-compute')" v-if="config.showOilConsumptionCompute">
-				<text class="list-icon">&#xe609;</text>
-				<text class="list-text">油耗计算</text>
-				<text class="navigat-arrow">&#xe65e;</text>
-			</view>
-			<view class="center-list-item" @click="toPage('/pages/video-search/video-search')" v-if="config.showSearchVideo">
-				<text class="list-icon">&#xe609;</text>
-				<text class="list-text">电影搜索</text>
-				<text class="navigat-arrow">&#xe65e;</text>
-			</view>
 			<view class="center-list-item" @click="toPage('/pages/page-to-QR/page-to-QR')" v-if="userPower === -1">
 				<text class="list-icon">&#xe609;</text>
 				<text class="list-text">获取二维码</text>
@@ -118,26 +72,9 @@
                 );
               })
             },
-			goLogin() {
-				if (!this.userInfo.isLogin) {
-					uni.navigateTo({
-						url: '/pages/login/login'
-					});
-				}
-			},
 			goAbout() {
 				uni.navigateTo({
 					url: '/pages/about/about'
-				});
-			},
-			toImgOcr() {
-				uni.navigateTo({
-					url: '/pages/img-ocr/img-ocr'
-				});
-			},
-			goTest () {
-				uni.navigateTo({
-					url: '/pages/test/test'
 				});
 			},
 			toPage (url) {
@@ -145,19 +82,7 @@
 					url
 				});
 			},
-			// s是
-			goUploadImg () {
-				uni.navigateTo({
-					url: '/pages/image-upload/image-upload'
-				});
-			}
 		},
-      async onPullDownRefresh() {
-        await this.$store.commit('getConfig')
-		await this.$store.commit('getUserPower')
-		  console.log(this.userPower,'userPower')
-        uni.stopPullDownRefresh();
-      },
        // 加了这个页面才可以被分享
 		onShareAppMessage: function (res) {
 		},

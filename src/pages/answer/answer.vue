@@ -1,8 +1,5 @@
 <template>
 	<view class="wrap">
-		<view class="search-box">
-			<SearchBtn placeholder="请输入电影名称搜索" v-model="search" @searchClick="searchClick"></SearchBtn>
-		</view>
 		<view class="list" v-if="list && list.length">
 			<view class="item" v-for="item in list" :key="item.webUrl">
 				<view class="content">
@@ -21,9 +18,7 @@
 			</view>
 		</view>
 		<view v-else class="center">
-			暂无数据 <br>
-			输入电影名称进行搜索 <br>
-			电影搜索可能耗时较长，请耐心等待。
+			暂无数据
 		</view>
 	</view>
 </template>
@@ -46,49 +41,6 @@
         computed: mapState(['userInfo']),
 		methods: {
 			...mapMutations(['getUserInfo','setStateData']),
-			async searchClick () {
-				if (!this.search) {
-					uni.showToast(
-							{
-								title: '请输入电影名称搜索!',
-								icon: 'none',
-							}
-					);
-					return
-				}
-				uni.showLoading({
-					title: '全网搜索中，\n可能需要几分钟时间，\n请耐心等待...'
-				})
-				let res
-				try {
-					res = await wx.cloud.callFunction({
-						name: 'getSearchVideo',
-						data: {
-							search: this.search || '肖申克'
-						}
-					})
-					uni.hideLoading()
-				} catch (e) {
-					uni.hideLoading()
-					uni.showToast(
-							{
-								title: '搜索失败，请修改关键字重试',
-								icon: 'none',
-							}
-					);
-				}
-				if(res.errMsg === 'cloud.callFunction:ok' && res.result.status === 0) {
-					console.log('res',res)
-					this.list = res.result.data
-				} else {
-					uni.showToast(
-							{
-								title: res.result.msg,
-								icon: 'none',
-							}
-					);
-				}
-			},
 			copy (item) {
 				console.log(item)
 				let text = `${item.src}\n${item.text}`
