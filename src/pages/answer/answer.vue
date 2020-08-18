@@ -10,21 +10,24 @@
 				<view class="content">
 					<view class="left">
 						<view class="author">
-							<image class="author-img" :src="value.authorImg"></image>
-							<view class="author-name">{{value.authorName}}</view>
-							<text class="author-text">{{value.authorBadgeText}}</text>
+							<view class="author-left">
+								<image class="author-img" :src="value.authorImg"></image>
+								<view class="author-name">{{value.authorName}}</view>
+							</view>
+							<view class="author-text">{{value.authorBadgeText}}</view>
 						</view>
 						<view>
-							<view>{{value.answerUpNum}}赞</view>
-							<view>{{value.editTimeText}}</view>
+							<view class="answer-up-num">{{value.answerUpNum}}赞</view>
+							<view>共{{value.answerImgList.length}}张图片</view>
 						</view>
+						<view>{{value.editTimeText}}</view>
 					</view>
 					<view class="right">
-						<image class="img" :src="value.answerImgList[0]"></image>
+						<image class="img" mode="aspectFill" :src="value.answerImgList[0]"></image>
 					</view>
 				</view>
 				<view class="bottom">
-					<view>问题关注量{{value.questionFollowNum}}</view>
+					<view class="num1">问题关注量{{value.questionFollowNum}}</view>
 					<view>浏览量{{value.questionReadNum}}</view>
 				</view>
 			</view>
@@ -137,6 +140,7 @@
 </script>
 
 <style lang="stylus" scoped>
+	@import "../../uni.styl"
 .wrap
 	display block
 	width 100%
@@ -149,49 +153,69 @@
 .list
 	display flex
 	flex-direction column
+	width 100%
 	.item
-		margin 10px 5px
-		padding 10px
+		display block
+		margin 5px
+		padding 5px
 		border-radius 5px
 		background-color #fff
-		display flex
-		flex-direction column
 		.title
 			width 100%;
-			font-size 24px
-			line-height 50px
+			font-size 18px
+			margin 5px 0
 		.content
 			display flex
 			width 100%
+			overflow hidden
+			justify-content space-between
 			.left
-				flex-direction column
-				display flex
+				display block
 				flex 1
+				max-width calc(100vw - 120px)
+				.answer-up-num
+					margin-right 10px
 				.author
+					line-height 30px
 					width 100%
-					.author-img
-						width 22px;
-						height 22px;
-						border-radius 2px
-					.author-name
-						white-space nowrap
+					display flex
+					align-items center
+					font-size 12px;
+					.author-left
+						display flex
+						align-items center
+						.author-img
+							width 22px;
+							height 22px;
+							border-radius 2px
+						.author-name
+							padding-left 3px
+							white-space nowrap
 					.author-text
+						color $uni-text-light-color
+						padding-left 3px
 						flex 1
-						overflow:hidden;
-						text-overflow:ellipsis;
-						white-space:nowrap
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						overflow: hidden;
+						word-break: break-all;
 			.right
-				height: 60px;
-				width: 90px;
-				margin-left: 12px;
-				border-radius: 4px;
+				padding-left: 12px;
 				overflow hidden
 				flex-shrink 0
 				.img
-					width 100%
-					height 100%
+					border-radius: 4px;
+					height: 60px;
+					width: 90px;
 		.bottom
 			display flex
+			font-size 12px
+			line-height 30px
+			justify-content flex-end
+			view
+				color $uni-text-light-color
+			.num1
+				margin-right 10px
 .center
 	text-align center
 	margin 20px 0
