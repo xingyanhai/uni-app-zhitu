@@ -30,6 +30,13 @@ const store = new Vuex.Store({
 			})
 			state.userInfo = userInfoData.result.data[0] || {};
 		},
+		async getUserPower(state) {
+			let resData = await wx.cloud.callFunction({
+				name: 'getUserPower',
+				data: {}
+			})
+			state.userPower = resData.result
+		},
 		async getConfig(state) {
 			let resData = await wx.cloud.callFunction({
 				name: 'getDbListData',

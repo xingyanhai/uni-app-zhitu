@@ -68,6 +68,7 @@
 						}
 					}
 				})
+				this.loadMoreText = '没有更多了'
 				let data = res.result.data[0]
 				this.totalDataList = data.answerImgList
 				uni.setNavigationBarTitle({

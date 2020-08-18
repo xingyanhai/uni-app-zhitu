@@ -13,6 +13,7 @@ const db = cloud.database({
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   let addCount = 0
+  let updateCount = 0
   // 数据库名称 数据库唯一标识（用于添加时判断是否存在） 要插入的数据List
   let {dbName, primaryKey, list} = event;
   if (list &&list.length) {
@@ -40,6 +41,16 @@ exports.main = async (event, context) => {
           }
         })
         addCount ++
+      } else { // 有则修改
+        console.log('-----有则修改----')
+        await db.collection(dbName).where({
+          [primaryKey]: item[primaryKey]
+        }).update({
+          data: {
+            ...item
+          }
+        })
+        updateCount ++
       }
     }
   }
@@ -47,7 +58,8 @@ exports.main = async (event, context) => {
   return {
     status: 0,
     data: {
-      addCount
+      addCount,
+      updateCount
     },
     message: '成功'
   }

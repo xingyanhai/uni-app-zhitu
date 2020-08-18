@@ -29,9 +29,9 @@
 				</view>
                 <text class="navigat-arrow">&#xe65e;</text>
             </view>
-			<view class="center-list-item" @click="toPage('/pages/page-to-QR/page-to-QR')" v-if="userPower === -1">
+			<view class="center-list-item" @click="toPage('/pages/tools/tools')" v-if="userPower === -1">
 				<text class="list-icon">&#xe609;</text>
-				<text class="list-text">获取二维码</text>
+				<text class="list-text">tools</text>
 				<text class="navigat-arrow">&#xe65e;</text>
 			</view>
 		</view>
@@ -87,7 +87,8 @@
 		onShareAppMessage: function (res) {
 		},
 		onLoad() {
-			this.getUserInfo()
+			console.log(this.userPower)
+			// this.getUserInfo()
 		}
 	}
 </script>
