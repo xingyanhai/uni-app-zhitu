@@ -13,7 +13,7 @@ const fetch = require('./fetch')
 const cheerio = require('cheerio');
 
 // 获取话题下面的精选 count个问题和回答
-async function getZhituQuestions (topicId = 19602490, count = 35) {
+async function getZhituQuestions (topicId = 19602490, count = 50) {
   // 渲染URL
   const url = `https://www.zhihu.com/api/v4/topics/${topicId}/feeds/essence`;
   const getData = async (offset, limit) => {
@@ -31,7 +31,7 @@ async function getZhituQuestions (topicId = 19602490, count = 35) {
     if (res && res.data && res.data.length) {
       res.data.forEach(e => {
         // 点赞数大约 10000
-        if (e.target.voteup_count > 0) {
+        if (e.target.voteup_count > 10000) {
           answerList.push({
             questionId: e.target.question.id,
             answerId: e.target.id,
@@ -150,7 +150,7 @@ exports.main = async (event, context) => {
   let res = await getZhituAnswerImages({
     // 写死一个topicId
     topicId: event.topicId || 19602490,
-    count: event.count || 10,
+    count: event.count || 50,
   })
   return res
 }
